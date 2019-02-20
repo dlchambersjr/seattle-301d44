@@ -13,6 +13,8 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(cors());
 
+
+
 // API Routes
 
 // OLD VERSION OF OUR LOCATION ROUTE
@@ -23,7 +25,7 @@ app.use(cors());
 
 // NEW VERSION OF OUR LOCATION ROUTE
 app.get('/location', (request, response) => {
-  console.log(request.query.data);
+
   searchToLatLong(request.query.data)
     .then(location => response.send(location))
     .catch(error => handleError(error, response));
@@ -36,17 +38,21 @@ app.get('/weather', (request, response) => {
 
 app.use('*', handleError);
 
+// Make sure the server is listening for requests
+app.listen(PORT, () => console.log(`App is up on ${PORT}`));
+
 // Helper Functions
 
 // Error handler
 function handleError(err, res) {
-  console.error(err);
+  console.log('\n\n***********\nError Handler Helper\n\n ***********\n')
+  // console.error(err);
   if (res) res.status(500).send('Sorry, something went wrong.');
 }
 
+// REFACTOR FOR SQL
 function searchToLatLong(query) {
   const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${query}&key=${process.env.GEOCODE_API_KEY}`;
-  console.log(url);
 
   return superagent.get(url)
     .then(res => {
@@ -54,6 +60,7 @@ function searchToLatLong(query) {
     })
     .catch(error => handleError);
 }
+
 
 
 function Location(query, res) {
@@ -80,5 +87,4 @@ function Weather(day) {
   this.time = new Date(day.time * 1000).toString().slice(0, 15);
 }
 
-// Make sure the server is listening for requests
-app.listen(PORT, () => console.log(`App is up on ${PORT}`));
+
