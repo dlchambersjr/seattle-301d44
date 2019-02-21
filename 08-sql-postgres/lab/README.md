@@ -4,7 +4,6 @@
 
 1. Create a new repo called `lab-08-sql`
 1. Clone the repo on your local machine
-1. Copy your files from lab-07 into the newly cloned repo folder.  (NOTE: do not copy the `.git` file)
 1. Make sure you have `.gitignore`, `.env`, and `eslintrc.json`
 
 ## Verify Postgresql
