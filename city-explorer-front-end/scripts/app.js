@@ -19,7 +19,7 @@ function fetchCityData(event) {
     url: `${__API_URL__}/location`,
     method: 'GET',
     data: {data: searchQuery}
-  })
+  })  
     .then(location => {
       displayMap(location);
       getResource('weather', location);
