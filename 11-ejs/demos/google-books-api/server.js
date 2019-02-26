@@ -11,7 +11,6 @@ const PORT = process.env.PORT || 3000;
 // Application Middleware
 app.use(express.urlencoded({ extended: true }));
 
-
 // Set the view engine for server-side templating
 app.set('view engine', 'ejs');
 
@@ -32,8 +31,6 @@ app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 function Book(info) {
   const placeHolder = 'https://i.imgur.com/J5LVHEL.jpg';
   this.title = info.title || 'No Title Avaialble';
-
-
 }
 
 // Note that .ejs file extension is not required
