@@ -38,7 +38,8 @@ function Book(info) {
 
 // Note that .ejs file extension is not required
 function newSearch(request, response) {
-  response.render('pages/index');
+  response.render('pages/index'); //location for ejs files
+  app.use(express.static('./public'));//location for other files like css
 }
 
 // No API key required
