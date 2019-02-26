@@ -14,12 +14,11 @@ app.use(express.static('./public'));
 
 // Add a route to listen for a post (form request)
 app.post('/contact', (request, response) => {
-  console.log(request.body);
-  response.sendFile('./thanks.html', { root: './public' });
-})
+  console.log(request.body.firstname);
+});
 
 // Add a catch-all to listen for routes that don't exist.
-app.get('*', (request, response) => response.status(404).send('This route does not exist'));
+app.use('*', (request, response) => console.log('There was a problem with your request'));
 
 // Tell the server to start listening
-app.listen(PORT, () => console.log(`Listening on ${PORT}`));
+app.listen(PORT, () => console.log(`Listning on ${PORT}`));
