@@ -11,8 +11,9 @@ const PORT = process.env.PORT || 3000;
 // Application Middleware
 app.use(express.urlencoded({ extended: true }));
 
-// Set the view engine for server-side templating
+// Set the file locations for ejs templates and static files like CSS
 app.set('view engine', 'ejs');
+app.use(express.static('./public'));
 
 // API Routes
 // Renders the search form
